@@ -1,78 +1,155 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600&display=swap');
 
-* {
+/* Reset and base styles */
+*,
+*::before,
+*::after {
     box-sizing: border-box;
     padding: 0;
     margin: 0;
 }
 
 body {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Montserrat', Arial, sans-serif;
     background-image: url(https://images.pexels.com/photos/359989/pexels-photo-359989.jpeg?cs=srgb&dl=pexels-fecundap6-359989.jpg&fm=jpg);
-    background-repeat: no-repeat; /* Optional: Control image repetition */
-    background-position: center; /* Optional: Control image position */
-    background-size: cover; /* Optional: Control image scaling */
-    color: whitesmoke;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    color: #f5f5f5;
+    min-height: 100vh;
+    letter-spacing: 0.02em;
+    line-height: 1.6;
+    transition: background 0.5s;
 }
 
+/* Headings */
 h1 {
-    margin: 10px 0 0 20px;
+    margin: 18px 0 0 24px;
     user-select: none;
+    font-size: 2.2rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.25);
 }
 
+/* Footer */
 footer {
     text-align: center;
     user-select: none;
+    font-size: 1rem;
+    padding: 18px 0 10px 0;
+    color: #e0e0e0;
+    opacity: 0.8;
 }
 
+/* Main container */
 .container {
-    background: #222f39;
+    background: rgba(34, 47, 57, 0.92);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.18);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     overflow: hidden;
     width: 100%;
-    max-width: 400px;
-    margin: 150px auto;
-    padding: 25px;
-    border-radius: 5px;
+    max-width: 420px;
+    margin: 140px auto;
+    padding: 36px 28px 32px 28px;
+    border-radius: 18px;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255,255,255,0.13);
+    transition: box-shadow 0.4s;
+    animation: fadeIn 1s;
+}
+
+/* Subtle fade-in animation */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(40px);}
+    to { opacity: 1; transform: translateY(0);}
 }
 
 .time {
-    font-size: 5rem;
-    margin-bottom: 10px;
+    font-size: 5.2rem;
+    margin-bottom: 18px;
     user-select: none;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-shadow: 0 4px 18px rgba(0,0,0,0.25);
+    color: #fff;
+    transition: color 0.5s;
+}
+
+.controls {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 5px;
 }
 
 .controls button {
-    background-color: #FF4C29;
+    background: linear-gradient(90deg, #FF4C29 0%, #FF7F50 100%);
+    color: #fff;
     margin: 10px 5px;
-    padding: 10px 20px 10px 20px;
-    font-size: 1rem;
-    border-radius: 4px;
+    padding: 12px 26px;
+    font-size: 1.05rem;
+    font-family: inherit;
+    font-weight: 600;
+    border-radius: 6px;
     border: none;
-    transition: 0.8s;
+    box-shadow: 0 2px 8px rgba(255,76,41,0.10);
+    transition: background 0.3s, color 0.3s, transform 0.2s;
     cursor: pointer;
+    outline: none;
+    letter-spacing: 0.03em;
 }
 
-.controls button:hover {
-    background-color: transparent;
-    color: whitesmoke;
+.controls button:focus {
+    outline: 2px solid #FF4C29;
+    outline-offset: 2px;
 }
 
-@media(max-width:480px) {
+.controls button:hover,
+.controls button:active {
+    background: rgba(255,76,41,0.08);
+    color: #FF4C29;
+    transform: translateY(-2px) scale(1.04);
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
     h1 {
-        font-size: 1.2rem;
+        font-size: 1.4rem;
+        margin-left: 10px;
     }
     .container {
-        max-width: 200px;
+        max-width: 95vw;
+        padding: 18px 6vw 18px 6vw;
+        margin: 60px auto;
+        border-radius: 10px;
     }
     .time {
-        font-size: 2rem;
+        font-size: 2.7rem;
     }
     .controls button {
-        padding: 5px;
-        margin: 0.5px;
+        padding: 7px 12px;
+        font-size: 0.95rem;
+    }
+    footer {
+        font-size: 0.9rem;
+    }
+}
+
+/* Accessibility: High contrast mode support */
+@media (prefers-contrast: more) {
+    body, .container {
+        background: #111 !important;
+        color: #fff !important;
+    }
+    .container {
+        border: 2px solid #fff;
+    }
+    .controls button {
+        background: #fff !important;
+        color: #FF4C29 !important;
+        border: 2px solid #FF4C29;
     }
 }
